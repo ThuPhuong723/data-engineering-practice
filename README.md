@@ -2,8 +2,10 @@
 ## Thông tin nhóm 
 1. Vũ Ngọc Thu Phương 23696981
 2. Lê Nhật Việt 23712661
+
 Lab 8
 Tình huống 1: Thiết kế Pipeline tự động thu thập và trực quan hóa dữ liệu
+
 Phương pháp tiếp cận: Áp dụng mô hình ETL (Extract – Transform – Load) để xây dựng luồng xử lý dữ liệu. Sử dụng Apache Airflow nhằm tự động hóa toàn bộ quá trình.
 
 Các bước thực hiện:
