@@ -22,6 +22,7 @@ Tổng quan dự án:
 Dự án mô phỏng một chuỗi xử lý dữ liệu kiểu ETL hoàn chỉnh trong bối cảnh thương mại điện tử. Dữ liệu được thu thập từ các nguồn định sẵn, sau đó trải qua bước chuyển đổi, xử lý rồi nạp vào hệ quản trị cơ sở dữ liệu (PostgreSQL hoặc MySQL). Apache Airflow đảm nhận vai trò tự động hóa và theo dõi luồng xử lý. Ngoài ra, hệ thống hỗ trợ khả năng mở rộng bằng plugin, dễ dàng kết nối với nhiều hệ cơ sở dữ liệu khác nhau, đảm bảo tính linh hoạt cao.
 
 Tình huống 2: Xây dựng Pipeline thu thập dữ liệu và huấn luyện mô hình học máy
+
 Mục tiêu: Thiết lập và vận hành các DAGs trong Apache Airflow, từ mức độ cơ bản đến nâng cao, để điều phối pipeline cho mô hình học máy.
 
 Công cụ và nền tảng sử dụng: Triển khai các pipeline thông qua Apache Airflow với khả năng hẹn lịch chạy, đảm bảo quy trình huấn luyện mô hình được tự động hóa theo thời gian định trước
