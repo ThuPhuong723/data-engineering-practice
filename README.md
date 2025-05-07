@@ -144,7 +144,7 @@ Thực hiện truy vấn, lọc, thống kê bằng PySpark.
 Xuất kết quả phân tích thành các tệp .csv.
 
 ## 3. Kết quả:
-Thành thạo quy trình chạy Spark job từ Docker, giải nén và xử lý dữ liệu lớn. Kết quả phân tích được xuất thành tệp và có thể sử dụng trong báo cáo hoặc dashboard trực quan hóa.
+Vẫn chưa làm được ex 6 
 
 
 
