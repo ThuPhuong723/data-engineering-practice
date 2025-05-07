@@ -84,6 +84,9 @@ Kiểm tra và xác minh đầu ra.
 ## 3. Tổng kết:
 Bài tập giúp củng cố kiến thức về scraping, xử lý file và làm việc với Pandas. Docker được sử dụng để đảm bảo môi trường chạy ổn định. Một số lỗi điển hình như phân quyền hoặc lỗi HTTP cũng được xử lý linh hoạt.
 
+![Uploading image.png…]()
+
+
 
 
 #### Exercise 3 – Làm việc với AWS S3 và Boto3
