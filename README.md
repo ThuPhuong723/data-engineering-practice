@@ -2,6 +2,8 @@
 ## Thông tin nhóm 
 1. Vũ Ngọc Thu Phương 23696981
 2. Lê Nhật Việt 23712661
+3. Nguyễn Hoàng Nam 23718591
+4. Nguyễn Minh Trí 23710141
 
 Lab 8
 Tình huống 1: Thiết kế Pipeline tự động thu thập và trực quan hóa dữ liệu
