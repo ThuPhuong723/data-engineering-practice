@@ -21,8 +21,11 @@ Bước 4: Thực hiện trực quan hóa dữ liệu bằng Power BI để hỗ
 Tổng quan dự án:
 Dự án mô phỏng một chuỗi xử lý dữ liệu kiểu ETL hoàn chỉnh trong bối cảnh thương mại điện tử. Dữ liệu được thu thập từ các nguồn định sẵn, sau đó trải qua bước chuyển đổi, xử lý rồi nạp vào hệ quản trị cơ sở dữ liệu (PostgreSQL hoặc MySQL). Apache Airflow đảm nhận vai trò tự động hóa và theo dõi luồng xử lý. Ngoài ra, hệ thống hỗ trợ khả năng mở rộng bằng plugin, dễ dàng kết nối với nhiều hệ cơ sở dữ liệu khác nhau, đảm bảo tính linh hoạt cao
 
+Kết quả khi chạy thử :ra được cái giao hình hình con  voi Psadmin ,nhưng chưa trực quan hóa được 
+
 ![image](https://github.com/user-attachments/assets/1ce86394-38e6-453e-9ec0-7ac2548c9d6c)
 
+![Uploading image.png…]()
 
 Tình huống 2: Xây dựng Pipeline thu thập dữ liệu và huấn luyện mô hình học máy
 
