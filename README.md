@@ -23,7 +23,6 @@ Dự án mô phỏng một chuỗi xử lý dữ liệu kiểu ETL hoàn chỉnh
 
 Kết quả khi chạy thử :ra được cái giao hình hình con  voi Psadmin ,nhưng chưa trực quan hóa được 
 
-![image](https://github.com/user-attachments/assets/1ce86394-38e6-453e-9ec0-7ac2548c9d6c)
 
 ![Uploading image.png…]()
 
