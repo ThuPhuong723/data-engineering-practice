@@ -62,6 +62,8 @@ Quản lý ngoại lệ nếu quá trình tải hoặc giải nén bị lỗi.
 
 3. Kết quả mong đợi:
 Sau khi chương trình hoàn tất, chỉ còn lại các file .csv trong thư mục downloads. Mỗi bước xử lý sẽ được in ra màn hình để theo dõi tiến trình. Các lỗi được thông báo rõ ràng, không làm chương trình dừng đột ngột.
+![image](https://github.com/user-attachments/assets/74bd383d-404b-4592-88ae-e36fc9424ce9)
+
 
 
 ## Exercise 2 – Web Scraping, Download và Phân tích dữ liệu
