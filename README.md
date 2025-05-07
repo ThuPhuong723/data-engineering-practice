@@ -123,6 +123,14 @@ Viết Dockerfile và docker-compose để chạy chương trình trong containe
 ## 3. Kết quả:
 Hệ thống xử lý thành công tất cả file JSON trong thư mục chỉ định. Dữ liệu được chuẩn hóa và lưu dưới dạng CSV dễ phân tích, có thể tiếp tục sử dụng cho các bước ETL khác.
 
+![image](https://github.com/user-attachments/assets/06ab7dca-85e1-425d-b155-1a3735445e59)
+
+![image](https://github.com/user-attachments/assets/e0bc9aae-12b8-4876-aefc-fd73365af98f)
+![image](https://github.com/user-attachments/assets/892042e3-15ca-48b0-a005-3eeb3d7db2fb)
+![image](https://github.com/user-attachments/assets/d7ac3e71-1c89-40fe-80b4-8b4e29d6781f)
+![image](https://github.com/user-attachments/assets/7952b2d0-4f95-48ad-aba6-70b93f2b4a9e)
+
+
 ## Exercise 5 – Thiết kế cơ sở dữ liệu và nạp dữ liệu vào PostgreSQL
 ## 1. Mục tiêu:
 Rèn luyện kỹ năng thiết kế mô hình quan hệ từ dữ liệu CSV và sử dụng Python để kết nối, thao tác với PostgreSQL.
