@@ -23,8 +23,7 @@ Dự án mô phỏng một chuỗi xử lý dữ liệu kiểu ETL hoàn chỉnh
 
 Kết quả khi chạy thử :ra được cái giao hình hình con  voi Psadmin ,nhưng chưa trực quan hóa được 
 
-
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/f74af19e-5abb-4a56-bf69-015795972708)
 
 Tình huống 2: Xây dựng Pipeline thu thập dữ liệu và huấn luyện mô hình học máy
 
