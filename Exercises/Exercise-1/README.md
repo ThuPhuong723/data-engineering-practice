@@ -50,3 +50,5 @@ the `zip` file.
 1. Don't assume all the uri's are valid.
 2. One approach would be the `Python` method `split()` to retrieve filename for uri,
 or maybe find the last occurrence of `/` and take the rest of the string.
+##### Báo cáo 
+Chạy được ra các file CSV ,chạy khá nhanh 
