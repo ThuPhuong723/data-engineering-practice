@@ -1,56 +1,56 @@
+import os
 import psycopg2
 import csv
-from pathlib import Path
 
-DATA_DIR = Path("./data")
+# Hàm kiểm tra và tạo thư mục 'data' nếu chưa tồn tại
+def ensure_data_directory():
+    if not os.path.exists('data'):
+        os.makedirs('data')
 
-def setup_database(cursor):
-    try:
-        with open("schema.sql", "r", encoding='utf-8') as file:
-            schema_sql = file.read()
-            cursor.execute(schema_sql)
-            print("✅ Bảng đã được tạo thành công.")
-    except Exception as e:
-        print(f"❌ Lỗi khi tạo bảng: {e}")
+# Hàm chạy câu lệnh SQL từ file
+def run_sql_file(cursor, file_path):
+    with open(file_path, 'r') as file:
+        sql = file.read()
+        cursor.execute(sql)
 
-def load_csv_to_table(cursor, table_name, file_path):
-    try:
-        with open(file_path, newline='', encoding='utf-8') as file:
-            reader = csv.reader(file)
-            headers = next(reader)
-            records = [tuple(row) for row in reader]
-
-            cols = ', '.join(headers)
-            vals = ', '.join(['%s'] * len(headers))
-            query = f"INSERT INTO {table_name} ({cols}) VALUES ({vals})"
-
-            for record in records:
-                cursor.execute(query, record)
-            print(f"✅ Đã chèn dữ liệu vào bảng '{table_name}' từ '{file_path.name}'")
-    except Exception as e:
-        print(f"❌ Lỗi khi chèn dữ liệu vào bảng '{table_name}': {e}")
+# Hàm chèn dữ liệu từ file CSV vào database
+def insert_csv(cursor, table_name, file_path):
+    with open(file_path, 'r') as f:
+        reader = csv.reader(f)
+        next(reader)  # Bỏ qua header nếu có
+        for row in reader:
+            query = f"INSERT INTO {table_name} VALUES ({', '.join(['%s'] * len(row))})"
+            cursor.execute(query, row)
 
 def main():
-    config = {
-        "host": "postgres",
-        "database": "postgres",
-        "user": "postgres",
-        "password": "postgres"
-    }
+    # Đảm bảo thư mục 'data' tồn tại
+    ensure_data_directory()
+    
+    # Kết nối đến PostgreSQL
+    conn = psycopg2.connect(
+    host='db',
+    port='5432',
+    dbname='yourdb',
+    user='user',
+    password='password'
+)
 
-    try:
-        with psycopg2.connect(**config) as conn:
-            with conn.cursor() as cursor:
-                setup_database(cursor)
+    
+    cursor = conn.cursor()
 
-                load_csv_to_table(cursor, "accounts", DATA_DIR / "accounts.csv")
-                load_csv_to_table(cursor, "products", DATA_DIR / "products.csv")
-                load_csv_to_table(cursor, "transactions", DATA_DIR / "transactions.csv")
+    # Chạy các câu lệnh SQL từ file schema.sql
+    print("Đang chờ PostgreSQL khởi động...")
+    run_sql_file(cursor, 'schema.sql')
 
-                conn.commit()
-                print("🎉 Tất cả dữ liệu đã được xử lý thành công.")
-    except Exception as err:
-        print(f"❌ Kết nối thất bại hoặc lỗi trong quá trình xử lý: {err}")
+    # Nhập dữ liệu từ các file CSV vào các bảng
+    insert_csv(cursor, 'students', 'data/students.csv')
+    insert_csv(cursor, 'courses', 'data/courses.csv')
+    insert_csv(cursor, 'enrollments', 'data/enrollments.csv')
+
+    # Commit và đóng kết nối
+    conn.commit()
+    cursor.close()
+    conn.close()
 
 if __name__ == "__main__":
     main()
