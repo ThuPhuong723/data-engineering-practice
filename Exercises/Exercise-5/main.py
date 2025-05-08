@@ -2,46 +2,55 @@ import psycopg2
 import csv
 from pathlib import Path
 
-def execute_sql_script(cursor, filepath):
-    with open(filepath, 'r') as f:
-        cursor.execute(f.read())
+DATA_DIR = Path("./data")
 
-def import_csv_to_table(cursor, csv_file, table_name):
-    with open(csv_file, 'r') as f:
-        reader = csv.reader(f)
-        next(reader)  # Skip header
-        for row in reader:
-            placeholders = ','.join(['%s'] * len(row))
-            cursor.execute(
-                f"INSERT INTO {table_name} VALUES ({placeholders})", row
-            )
+def setup_database(cursor):
+    try:
+        with open("schema.sql", "r", encoding='utf-8') as file:
+            schema_sql = file.read()
+            cursor.execute(schema_sql)
+            print("✅ Bảng đã được tạo thành công.")
+    except Exception as e:
+        print(f"❌ Lỗi khi tạo bảng: {e}")
+
+def load_csv_to_table(cursor, table_name, file_path):
+    try:
+        with open(file_path, newline='', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            headers = next(reader)
+            records = [tuple(row) for row in reader]
+
+            cols = ', '.join(headers)
+            vals = ', '.join(['%s'] * len(headers))
+            query = f"INSERT INTO {table_name} ({cols}) VALUES ({vals})"
+
+            for record in records:
+                cursor.execute(query, record)
+            print(f"✅ Đã chèn dữ liệu vào bảng '{table_name}' từ '{file_path.name}'")
+    except Exception as e:
+        print(f"❌ Lỗi khi chèn dữ liệu vào bảng '{table_name}': {e}")
 
 def main():
-    conn = psycopg2.connect(
-        host="localhost", database="postgres", user="postgres", password="postgres"
-    )
-    cur = conn.cursor()
-
-    # Step 1: Run schema.sql
-    execute_sql_script(cur, "schema.sql")
-    conn.commit()
-    print("✅ Tables created.")
-
-    # Step 2: Load CSV data
-    data_dir = Path("data")
-    csv_table_map = {
-        "customers.csv": "customers",
-        "products.csv": "products",
-        "orders.csv": "orders"
+    config = {
+        "host": "postgres",
+        "database": "postgres",
+        "user": "postgres",
+        "password": "postgres"
     }
 
-    for csv_file, table in csv_table_map.items():
-        import_csv_to_table(cur, data_dir / csv_file, table)
-        print(f"✅ Imported {csv_file} into {table}")
+    try:
+        with psycopg2.connect(**config) as conn:
+            with conn.cursor() as cursor:
+                setup_database(cursor)
 
-    conn.commit()
-    cur.close()
-    conn.close()
+                load_csv_to_table(cursor, "accounts", DATA_DIR / "accounts.csv")
+                load_csv_to_table(cursor, "products", DATA_DIR / "products.csv")
+                load_csv_to_table(cursor, "transactions", DATA_DIR / "transactions.csv")
+
+                conn.commit()
+                print("🎉 Tất cả dữ liệu đã được xử lý thành công.")
+    except Exception as err:
+        print(f"❌ Kết nối thất bại hoặc lỗi trong quá trình xử lý: {err}")
 
 if __name__ == "__main__":
     main()
